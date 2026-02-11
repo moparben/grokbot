@@ -1,0 +1,41 @@
+name: Firmware CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [esp32s3, esp32p4]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ESP-IDF
+        uses: espressif/setup-esp-idf@v1
+        with:
+          version: v5.2
+
+      - name: Build firmware
+        working-directory: firmware
+        shell: bash
+        run: |
+          idf.py set-target "${{ matrix.target }}"
+          idf.py -B "build-${{ matrix.target }}" -DSDKCONFIG_DEFAULTS="boards/${{ matrix.target }}/sdkconfig.defaults" build
+
+      - name: Build example demo-basic
+        working-directory: examples/demo-basic
+        shell: bash
+        run: |
+          idf.py set-target "${{ matrix.target }}"
+          idf.py -B "build-${{ matrix.target }}" -DSDKCONFIG_DEFAULTS="../../firmware/boards/${{ matrix.target }}/sdkconfig.defaults" build

@@ -1,0 +1,12 @@
+{
+    "cmake.sourceDirectory": "/home/mopar/projects/eyes/04_eyes",
+    "cmake.configureOnOpen": false,
+    "cmake.automaticReconfigure": false,
+    "idf.port": "/dev/ttyACM0",
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /home/mopar/projects/ears/firmware/01_i2s_capture && source /home/mopar/esp/esp-idf/export\\.sh && idf\\.py set-target esp32p4 && idf\\.py build$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

@@ -1,0 +1,375 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Setup ESP-IDF (PowerShell)",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/setup_idf_env.ps1",
+				"-InstallPython",
+				"-PreferredPythonVersion",
+				"3.13.9"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Setup ESP-IDF (Bash)",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Write-Host 'Bash setup script is POSIX only. On Windows, run the PowerShell setup task or use WSL.'"
+			],
+			"presentation": {
+				"echo": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Verify environment (PowerShell)",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/verify_env.ps1"
+			],
+			"presentation": {
+				"echo": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Env Diagnostics (PowerShell)",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/env_check.ps1"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Build All (PowerShell)",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/build_all.ps1",
+				"-Target",
+				"esp32s3",
+				"-CreateVenv"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Debug Build (esp32s3)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe"
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/debug_build.ps1",
+				"-Target",
+				"esp32s3"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Debug Build (esp32p4)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe"
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/debug_build.ps1",
+				"-Target",
+				"esp32p4"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Build firmware (esp32s3)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PATH": "D:\\esp32_projects\\Espressif\\frameworks\\esp-idf-v5.5.1",
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe",
+					"IDF_PYTHON_ENV_PATH": ""
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/build_esp32s3.ps1"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Build firmware (esp32p4)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe"
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Set-Location -Path ${workspaceFolder}/firmware; idf.py set-target esp32p4; idf.py -B build-esp32p4 -DSDKCONFIG_DEFAULTS=boards/esp32p4/sdkconfig.defaults build"
+			],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Build example demo-basic (esp32s3)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe"
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Set-Location -Path ${workspaceFolder}/examples/demo-basic; idf.py set-target esp32s3; idf.py -B build-esp32s3 -DSDKCONFIG_DEFAULTS=../../firmware/boards/esp32s3/sdkconfig.defaults build"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Build example demo-basic (esp32p4)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe"
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Set-Location -Path ${workspaceFolder}/examples/demo-basic; idf.py set-target esp32p4; idf.py -B build-esp32p4 -DSDKCONFIG_DEFAULTS=../../firmware/boards/esp32p4/sdkconfig.defaults build"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Monitor firmware (esp32s3)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PATH": "D:\\esp32_projects\\Espressif\\frameworks\\esp-idf-v5.5.1",
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe",
+					"IDF_PYTHON_ENV_PATH": ""
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Set-Location -Path ${workspaceFolder}/firmware; & ${workspaceFolder}/grokbot.venv/Scripts/python.exe D:/esp32_projects/Espressif/frameworks/esp-idf-v5.5.1/tools/idf.py -B build-esp32s3 monitor"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated",
+				"close": false
+			},
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Monitor firmware (esp32p4)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PATH": "D:\\esp32_projects\\Espressif\\frameworks\\esp-idf-v5.5.1",
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe",
+					"IDF_PYTHON_ENV_PATH": ""
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Set-Location -Path ${workspaceFolder}/firmware; & ${workspaceFolder}/grokbot.venv/Scripts/python.exe D:/esp32_projects/Espressif/frameworks/esp-idf-v5.5.1/tools/idf.py -B build-esp32p4 monitor"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated",
+				"close": false
+			},
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Flash firmware (esp32s3)",
+			"type": "shell",
+			"command": "powershell",
+			"options": {
+				"env": {
+					"IDF_PYTHON": "${workspaceFolder}\\grokbot.venv\\Scripts\\python.exe"
+				}
+			},
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Set-Location -Path ${workspaceFolder}; & scripts/flash_all.ps1 esp32s3"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "IDF: Flash firmware (esp32p4)",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/scripts/flash_all.ps1",
+				"-Target",
+				"esp32p4"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated",
+				"close": false
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Install IDF Requirements",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"& D:\\esp32_projects\\grokbot\\grokbot.venv\\Scripts\\Activate.ps1; pip install -r D:\\esp32_projects\\esp_idf\\requirements.txt"
+			]
+		},
+		{
+			"label": "Install IDF Core Requirements",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"& D:\\esp32_projects\\grokbot\\grokbot.venv\\Scripts\\Activate.ps1; pip install -r D:\\esp32_projects\\esp_idf\\tools\\requirements\\requirements.core.txt"
+			]
+		},
+		{
+			"label": "List COM Ports",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"Get-WMIObject Win32_SerialPort | Select-Object DeviceID, Description, Status"
+			]
+		},
+		{
+			"label": "Check Serial Ports",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"[System.IO.Ports.SerialPort]::GetPortNames()"
+			]
+		},
+		{
+			"label": "Check Ports",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"mode"
+			]
+		},
+		{
+			"label": "List USB Devices",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"Get-PnpDevice -Class 'Ports' -Status OK | Format-Table FriendlyName, InstanceId -AutoSize"
+			]
+		}
+	]
+}

@@ -1,0 +1,14 @@
+# ESP-IDF build artifacts
+build/
+*.pyc
+__pycache__/
+*.log
+sdkconfig
+sdkconfig.old
+
+# VS Code
+
+
+# Python virtual environments
+.env/
+.venv/

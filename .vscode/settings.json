@@ -1,0 +1,34 @@
+{
+    "terminal.integrated.cwd": "D:\\esp32_projects\\grokbot",
+    "terminal.integrated.shellIntegration.enabled": true,
+    "python.defaultInterpreterPath": "D:\\esp32_projects\\grokbot\\grokbot.venv\\Scripts\\python.exe",
+    "terminal.integrated.defaultProfile.windows": "Grokbot IDF",
+    "terminal.integrated.profiles.windows": {
+        "Grokbot IDF": {
+            "path": "pwsh.exe",
+            "args": ["-NoExit", "-ExecutionPolicy", "Bypass", "-Command", ". 'D:\\esp32_projects\\grokbot\\scripts\\activate_grokbot.ps1'"]
+        }
+    },
+    "terminal.integrated.env.windows": {
+        "IDF_PATH": "D:\\esp32_projects\\Espressif\\frameworks\\esp-idf-v5.5.1",
+        "IDF_TOOLS_PATH": "D:\\esp32_projects\\Espressif",
+        "IDF_PYTHON": "D:\\esp32_projects\\grokbot\\grokbot.venv\\Scripts\\python.exe",
+        "VIRTUAL_ENV": "D:\\esp32_projects\\grokbot\\grokbot.venv",
+        "PATH": "D:\\esp32_projects\\grokbot\\grokbot.venv\\Scripts;D:\\esp32_projects\\Espressif\\frameworks\\esp-idf-v5.5.1\\tools;D:\\esp32_projects\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin;D:\\esp32_projects\\Espressif\\tools\\riscv32-esp-elf-gdb\\16.2_20250324\\riscv32-esp-elf-gdb\\bin;D:\\esp32_projects\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\bin;D:\\esp32_projects\\Espressif\\tools\\xtensa-esp-elf-gdb\\16.2_20250324\\xtensa-esp-elf-gdb\\bin;D:\\esp32_projects\\Espressif\\tools\\cmake\\3.30.2\\bin;D:\\esp32_projects\\Espressif\\tools\\ninja\\1.12.1;D:\\esp32_projects\\Espressif\\tools\\idf-exe\\1.0.3;D:\\esp32_projects\\Espressif\\tools\\ccache\\4.11.2\\ccache-4.11.2-windows-x86_64;D:\\esp32_projects\\Espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20250707\\openocd-esp32\\bin;${env:PATH}"
+    },
+    "idf.pythonBinPath": "D:\\esp32_projects\\grokbot\\grokbot.venv\\Scripts\\python.exe",
+    "idf.espIdfPath": "D:\\esp32_projects\\Espressif\\frameworks\\esp-idf-v5.5.1",
+    "idf.toolsPath": "D:\\esp32_projects\\Espressif",
+    "idf.port": "COM3",
+    "cmake.sourceDirectory": "D:/esp32_projects/grokbot/firmware",
+    "idf.monitorPort": "COM5",
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.pythonProjects": [],
+    "idf.espIdfPathWin": "D:/esp32_projects/Espressif/frameworks/esp-idf-v5.5.1/",
+    "idf.toolsPathWin": "D:\\esp32_projects\\Espressif",
+    "idf.pythonInstallPath": "D:\\esp32_projects\\Espressif\\tools\\idf-python\\3.11.2\\python.exe",
+    "idf.openOcdConfigs": [
+        "board/esp32s3-builtin.cfg"
+    ],
+    "idf.portWin": "COM3"
+}
